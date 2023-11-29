@@ -1,4 +1,4 @@
-# isomorphic-js-lib-template Changelog
+# @digitalbazaar/cborld-cli Changelog
 
 ## 1.0.0 - TBD
 

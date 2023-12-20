@@ -106,3 +106,7 @@ dist
 # Editor files
 *~
 *.sw[nop]
+
+# default output files
+out.cborld
+out.jsonld

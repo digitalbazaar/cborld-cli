@@ -33,6 +33,7 @@ Or run directly with `npx`:
 ```
 npx @digitalbazaar/cborld encode --verbose --diagnose examples/note.jsonld
 ```
+
 ## Install
 
 ### NPM
@@ -78,7 +79,17 @@ npx @digitalbazaar/cborld-cli --help
 Examples:
 
 ```
-TBD
+# basic conversion of file, with verbose and diagnostic output
+./cborld encode --verbose --diagnose ../cborld/examples/note.jsonld -o note.cborld
+
+# decode file
+./cborld decode --verbose --diagnose ./note.cborld
+
+# output to hex string
+./cborld encode input.jsonld -o - | xxd -p -c 0 -
+
+# decode hex string
+xxd -r -p -c 0 input.hex | ./cborld decode -v -d -
 ```
 
 ## Contribute

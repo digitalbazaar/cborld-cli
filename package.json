@@ -1,7 +1,7 @@
 {
   "name": "@digitalbazaar/cborld-cli",
   "version": "0.0.1-0",
-  "description": "A JavaScript CBOR-LD CLI.",
+  "description": "JavaScript CBOR-LD Ccommand Line Interface.",
   "license": "BSD-3-Clause",
   "type": "module",
   "exports": "./lib/index.js",

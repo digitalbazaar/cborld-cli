@@ -3,4 +3,4 @@
 ## 1.0.0 - TBD
 
 ### Added
-- Initial commit.
+- Initial release.

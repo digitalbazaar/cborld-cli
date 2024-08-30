@@ -19,56 +19,56 @@ This module provides a Node.js CBOR-LD CLI.
 
 ## Quickstart
 
-To quickly see cborld in action, run the following commands:
+To quickly see `cborld-cli` in action, run the following commands:
 
 ```
 git clone https://github.com/digitalbazaar/cborld-cli.git
-cd cborld
+cd cborld-cli
 npm i
-./cborld encode --verbose --diagnose examples/note.jsonld
-./cborld decode --verbose --diagnose out.cborld
+mkdir -p tmp
+./cborld-cli encode --verbose --diagnose ./examples/note.jsonld -o ./tmp/note.cborld
+./cborld-cli decode --verbose --diagnose ./tmp/note.cborld -o ./tmp/note.jsonld
+npx json-diff ./examples/note.jsonld ./tmp/note.jsonld
+# there should be no difference in the round trip conversion
 ```
 
 Or run directly with `npx`:
 ```
-npx @digitalbazaar/cborld encode --verbose --diagnose examples/note.jsonld
+mkdir -p tmp
+npx @digitalbazaar/cborld encode --verbose --diagnose ./examples/note.jsonld -o ./tmp/note.cborld
+# ... continue as above
 ```
 
-## Install
-
-### NPM
-
-```
-npm install @digitalbazaar/cborld-cli
-```
-
-### Git
-
-To install locally (for development):
-
-```
-git clone https://github.com/digitalbazaar/cborld-cli.git
-cd cborld
-npm install
-```
-
-## CLI
+## Usage
 
 A command line interface tool called `cborld` is provided to encode and decode
 CBOR-LD.
 
-`cborld` can be run installed, run directly, or run via `npx`:
+`cborld` can be run installed globally, run directly, or run via `npx`:
+
+### Global Install
 
 ```
-npm install -g cborld-cli
+npm install -g @digitalbazaar/cborld-cli
 cborld [OPTIONS]
 ```
+
+### Development
+
 ```
-./cborld [OPTIONS]
+git clone https://github.com/digitalbazaar/cborld-cli.git
+cd cborld-
+npm install
+./cborld-cli [OPTIONS]
 ```
+
+### NPX
+
 ```
 npx @digitalbazaar/cborld-cli [OPTIONS]
 ```
+
+### Help
 
 The options follow the API. See help for more information:
 
@@ -76,22 +76,25 @@ The options follow the API. See help for more information:
 npx @digitalbazaar/cborld-cli --help
 ```
 
-Examples:
+## Examples
 
 ```
+mkdir -p tmp
+
 # basic conversion of file, with verbose and diagnostic output
-cborld encode --verbose --diagnose ../cborld/examples/note.jsonld -o note.cborld
+cborld encode --verbose --diagnose ./examples/note.jsonld -o ./tmp/note.cborld
+# creates `./tmp/note.cborld`
 
 # decode file
-cborld decode --verbose --diagnose ./note.cborld
-## ...will generate `out.jsonld`
+cborld decode --verbose --diagnose ./tmp/note.cborld -o ./tmp/note.jsonld
+# creates `./tmp/note.jsonld`
 
 # output to hex string
-cborld encode out.jsonld -o - | xxd -p -c 0 - > out.hex
+cborld encode ./examples/note.jsonld -o - | xxd -p -c 0 - > ./tmp/note.hex
 
 # decode hex string
-xxd -r -p -c 0 out.hex | cborld decode -v -d -
-## ...will generate `out.jsonld`
+xxd -r -p -c 0 ./tmp/note.hex | cborld decode -v -d - -o ./tmp/note2.jsonld
+# creates `./tmp/note2.jsonld`
 ```
 
 ## Contribute

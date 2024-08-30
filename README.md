@@ -80,16 +80,18 @@ Examples:
 
 ```
 # basic conversion of file, with verbose and diagnostic output
-./cborld encode --verbose --diagnose ../cborld/examples/note.jsonld -o note.cborld
+cborld encode --verbose --diagnose ../cborld/examples/note.jsonld -o note.cborld
 
 # decode file
-./cborld decode --verbose --diagnose ./note.cborld
+cborld decode --verbose --diagnose ./note.cborld
+## ...will generate `out.jsonld`
 
 # output to hex string
-./cborld encode input.jsonld -o - | xxd -p -c 0 -
+cborld encode out.jsonld -o - | xxd -p -c 0 - > out.hex
 
 # decode hex string
-xxd -r -p -c 0 input.hex | ./cborld decode -v -d -
+xxd -r -p -c 0 out.hex | cborld decode -v -d -
+## ...will generate `out.jsonld`
 ```
 
 ## Contribute

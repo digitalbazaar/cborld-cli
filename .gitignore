@@ -110,3 +110,6 @@ dist
 # default output files
 out.cborld
 out.jsonld
+
+# README example temporary files
+tmp
